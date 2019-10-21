@@ -1,0 +1,58 @@
+---
+title: "Some Monuments Around Washington DC"
+author: "Joe Barter"
+date: "10/21/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Week 2 Assignment
+
+## R Markdown and Leaflet
+
+This is an R Markdown document features a simple map created with Leaflet. The date this document was created is above.  The interactive map is below.  
+
+
+### Navigation Instructions:
+ + Hover over the icons to see the monument's name. 
+ + Click the icon's popup link to view detailed information from wikipedia for each monument.  
+
+```{r, echo=TRUE}
+
+library(leaflet)
+dcMonuments <- data.frame(
+	name = c("Albert Einstein Memorial", "Franklin Delano Roosevelt Memorial", "Korean War Veterans Memorial", 
+		"Lincoln Memorial", "Martin Luther King, Jr. Memorial", "National World War II Memorial", 
+		"Thomas Jefferson Memorial", "Ulysses S. Grant Memorial", "Vietnam Veterans Memorial", 
+		"Vietnam Women's Memorial", "Washington Monument"), 
+
+	lat = c(38.8924, 38.8829, 38.8878, 38.889248, 38.8862, 38.8894, 38.8814, 38.8898, 38.8913, 38.8906, 38.889484),
+	lng = c(-77.0484, -77.0424, -77.0478, -77.050636, -77.0442, -77.0405, -77.0365, -77.0129, -77.0477, -77.047, -77.035278),
+	
+	monumentSite <- c(  
+      "<a href='https://en.wikipedia.org/wiki/Albert_Einstein_Memorial'>Albert Einstein Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Franklin_Delano_Roosevelt_Memorial'>Franklin Delano Roosevelt Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Korean_War_Veterans_Memorial'>Korean War Veterans Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Lincoln_Memorial'>Lincoln Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Martin_Luther_King_Jr._Memorial'>Martin Luther King, Jr. Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/World_War_II_Memorial'>National World War II Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Jefferson_Memorial'>Thomas Jefferson Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Ulysses_S._Grant_Memorial'>Ulysses S. Grant Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Vietnam_Veterans_Memorial'>Vietnam Veterans Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Vietnam_Women%27s_Memorial'>Vietnam Women's Memorial</a>",
+      "<a href='https://en.wikipedia.org/wiki/Washington_Monument'>Washington Monument</a>"
+      )	
+
+	)
+
+
+
+    dcMonuments %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(label =  dcMonuments$name, popup =  dcMonuments$monumentSite)
+
+```
