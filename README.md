@@ -7,5 +7,7 @@ The project is coded using R Markdown and Leaflet.  It is rendered to HTML and c
 
 The rendered HTML shows a map with a few monuments in the Washington DC area and contains links our to Wikipedia pages for the monuments.  
 
+View the html file via the link to https://lnjoe.github.io/DevelopingDataProducts/SomeDCMonuments.html 
+
 
 
